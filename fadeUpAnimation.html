@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          transform: translate3d(0, 40px, 0);
+        }
+
+        to {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fadeInUp {
+        from {
+          transform: translate3d(0, 40px, 0);
+        }
+
+        to {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+
+      a {
+          opacity: 0;
+      }
+
+      .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+      }
+
+      .animatedFadeInUp {
+        opacity: 0;
+      }
+
+      .fadeInUp {
+        opacity: 0;
+        animation-name: fadeInUp;
+        -webkit-animation-name: fadeInUp;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex h-100">
+      <a >link1</a>
+      <a>link2 </a>
+      <a >link3</a>
+      <a >link4</a>
+    </div>
+    <script>
+      const fadeUpLinks = () => {
+        const links = document.querySelectorAll("a");
+        links.forEach((node, idx) =>
+          setTimeout(function () {
+            node.classList.add("animated", "animatedFadeInUp", "fadeInUp");
+          }, idx * 300)
+        );
+      };
+
+      fadeUpLinks();
+    </script>
+  </body>
+</html>
